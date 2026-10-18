@@ -18,35 +18,38 @@ const RSVP_DESTINATIONS = {
 
 const RSVP_EVENTS = {
   "groom": [
-    "Masti ki हल्दी",
-    "Sangeet Night",
-    "Wedding Carnival",
-    "Ghurchadi",
-    "Departure of Baraat & Royal Wedding"
+    { key: "haldi", labels: ["Masti ki हल्दी"] },
+    { key: "sangeet", labels: ["Sangeet Night"] },
+    { key: "carnival", labels: ["Wedding Carnival"] },
+    { key: "ghurchadi", labels: ["Ghurchadi"] },
+    {
+      key: "wedding",
+      labels: ["Departure of Baraat & Shubh Vivah", "Departure of Baraat & Royal Wedding"]
+    }
   ],
   "other": [
-    "Wedding Carnival",
-    "Ghurchadi",
-    "Departure of Baraat"
+    { key: "carnival", labels: ["Wedding Carnival"] },
+    { key: "ghurchadi", labels: ["Ghurchadi"] },
+    { key: "baraat", labels: ["Departure of Baraat", "Departure of Baraat & Shubh Vivah"] }
   ],
   "bride": [
-    "Haldi",
-    "Mehendi",
-    "After Party",
-    "Wedding Carnival",
-    "Ghurchadi",
-    "Departure of Baraat"
+    { key: "haldi", labels: ["Haldi", "Masti ki हल्दी"] },
+    { key: "mehendi", labels: ["Mehendi"] },
+    { key: "afterparty", labels: ["After Party"] },
+    { key: "carnival", labels: ["Wedding Carnival"] },
+    { key: "ghurchadi", labels: ["Ghurchadi"] },
+    { key: "baraat", labels: ["Departure of Baraat", "Departure of Baraat & Shubh Vivah"] }
   ]
 };
 
-const RSVP_SCHEMA_VERSION = 2;
+const RSVP_SCHEMA_VERSION = 3;
 
 function doGet() {
   return jsonResponse({
     ok: true,
     schemaVersion: RSVP_SCHEMA_VERSION,
     columns: ["Name", "Phone", "Attending", "Party size"]
-      .concat(RSVP_EVENTS.groom, ["Created at"])
+      .concat(RSVP_EVENTS.groom.map(function (event) { return event.key; }), ["Created at"])
   });
 }
 
@@ -73,8 +76,8 @@ function doPost(e) {
       rsvp.attending === "yes" ? "Yes" : "No",
       rsvp.attending === "yes" ? safeCell(rsvp.party, 10) : ""
     ].concat(
-      RSVP_EVENTS[submission.page].map(function (eventName) {
-        return rsvp.attending === "yes" && rsvp.events.indexOf(eventName) !== -1 ? "Yes" : "No";
+      RSVP_EVENTS[submission.page].map(function (event) {
+        return rsvp.attending === "yes" && rsvp.events.indexOf(event.key) !== -1 ? "Yes" : "No";
       }),
       [new Date()]
     ));
@@ -118,9 +121,8 @@ function validateRsvp(submission) {
   if (attending === "yes" && (!Array.isArray(rsvp.events) || rsvp.events.length > 20)) {
     throw new Error("Event selection is invalid.");
   }
-  const allowedEvents = RSVP_EVENTS[submission.page];
   if (attending === "yes" && rsvp.events.some(function (event) {
-    return allowedEvents.indexOf(event) === -1;
+    return !getRsvpEventKey(submission.page, event);
   })) {
     throw new Error("Event selection contains an unknown event.");
   }
@@ -130,13 +132,22 @@ function validateRsvp(submission) {
     phone: rsvp.phone.trim(),
     attending: attending,
     party: attending === "yes" ? String(rsvp.party || "") : "",
-    events: attending === "yes" ? rsvp.events : []
+    events: attending === "yes"
+      ? rsvp.events.map(function (event) { return getRsvpEventKey(submission.page, event); })
+      : []
   };
+}
+
+function getRsvpEventKey(page, value) {
+  const event = RSVP_EVENTS[page].find(function (candidate) {
+    return candidate.key === value || candidate.labels.indexOf(value) !== -1;
+  });
+  return event ? event.key : "";
 }
 
 function ensureSheetLayout(sheet, page) {
   const headers = ["Name", "Phone", "Attending", "Party size"]
-    .concat(RSVP_EVENTS[page], ["Created at"]);
+    .concat(RSVP_EVENTS[page].map(function (event) { return event.key; }), ["Created at"]);
   const lastRow = sheet.getLastRow();
   const lastColumn = sheet.getLastColumn();
 
@@ -161,16 +172,17 @@ function ensureSheetLayout(sheet, page) {
     };
     const attending = String(oldValue("Attending")).toLowerCase() === "yes" ? "Yes" : "No";
     const oldEvents = String(oldValue("Events")).split(/\s*,\s*/);
-    const eventAnswers = RSVP_EVENTS[page].map(function (eventName) {
-      const eventColumn = currentHeaders.indexOf(eventName);
-      const answer = eventColumn === -1 ? "" : String(row[eventColumn]).toLowerCase();
-      const previousEventName = eventName === "Departure of Baraat"
-        ? "Departure of Baraat & Royal Wedding"
-        : eventName;
+    const eventAnswers = RSVP_EVENTS[page].map(function (event) {
+      const legacyHeaders = [event.key].concat(event.labels);
+      const eventAnswer = legacyHeaders.reduce(function (answer, header) {
+        const eventColumn = currentHeaders.indexOf(header);
+        return eventColumn === -1 ? answer : String(row[eventColumn]).toLowerCase() || answer;
+      }, "");
       return attending === "Yes" &&
-        (answer === "yes" ||
-          (answer !== "no" && (oldEvents.indexOf(eventName) !== -1 ||
-            oldEvents.indexOf(previousEventName) !== -1)))
+        (eventAnswer === "yes" ||
+          (eventAnswer !== "no" && legacyHeaders.some(function (header) {
+            return oldEvents.indexOf(header) !== -1;
+          })))
         ? "Yes"
         : "No";
     });

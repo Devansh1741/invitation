@@ -75,8 +75,9 @@ When updating an existing deployment, use **Deploy → Manage deployments**,
 edit the current web app deployment, select **New version**, and deploy. This
 updates the code behind its existing URL; creating a separate deployment
 instead gives you a different URL. Open the `/exec` URL in a browser after
-deploying: the current receiver returns JSON with `"schemaVersion":2` and the
-new column names. If it does not, the new script version is not active at that
+deploying: the current receiver returns JSON with `"schemaVersion":3` and the
+new column names. Event columns use short keys such as `haldi`, `carnival`,
+and `wedding`. If it does not, the new script version is not active at that
 URL. Existing rows are migrated the next time a response is submitted to that
 tab; older rows are not changed just by deploying.
 
