@@ -7,14 +7,14 @@
 <meta name="theme-color" content="#7C2F33">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Mayank &amp; Muskan — 19–20 November 2026">
+<meta property="og:title" content="Muskan &amp;Mayank — Wedding Invitation">
 <meta property="og:description" content="With the blessings of Shri Ganesh and our families, we joyfully invite you to celebrate our wedding.">
 <!-- For the WhatsApp/Facebook preview image, replace this with your full URL once deployed,
      e.g. https://your-site.netlify.app/preview.jpg -->
 <meta property="og:image" content="preview.jpg">
 <meta name="twitter:card" content="summary_large_image">
 
-<title>Mayank &amp; Muskan — Wedding Invitation</title>
+<title>Muskan &amp;Mayank — Wedding Invitation</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Prata&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Tenor+Sans&family=Italianno&family=Tangerine:wght@400;700&family=Noto+Serif+Devanagari:wght@400;500;600&display=swap">
@@ -485,7 +485,7 @@ section{padding-block:72px 12px}
   text-transform:uppercase;color:var(--rose);text-align:center;line-height:1.9;
   transition:opacity .5s ease;
 }
-.date-lock.hide{opacity:0;pointer-events:none}
+.date-lock.hide{display:none;opacity:0;pointer-events:none}
 .lockdot{
   width:6px;height:6px;border-radius:50%;background:var(--rose);flex:none;
   animation:pulse 1.8s ease-in-out infinite;
@@ -493,7 +493,7 @@ section{padding-block:72px 12px}
 @keyframes pulse{0%,100%{opacity:.3;transform:scale(.8)}50%{opacity:1;transform:scale(1.15)}}
 
 .date-final{
-  text-align:center;margin-top:26px;
+  text-align:center;margin-top:20px;
   display:none;opacity:0;transform:translateY(8px);
   transition:opacity .7s ease,transform .7s ease;
 }
@@ -501,15 +501,17 @@ section{padding-block:72px 12px}
 .date-final.lit{opacity:1;transform:none}
 .date-final p{font-style:italic;color:var(--ink-soft);margin:0 0 18px}
 .scroll-on{
-  display:inline-flex;align-items:center;gap:9px;cursor:pointer;
-  font-family:"Tenor Sans",sans-serif;font-size:10.5px;letter-spacing:.3em;
+  display:inline-flex;align-items:center;gap:9px;
+  font-family:"Tenor Sans",sans-serif;font-size:11px;letter-spacing:.3em;
   text-transform:uppercase;color:#FDF8F3;
   background:linear-gradient(135deg,var(--wine),var(--wine-deep));
-  border:0;border-radius:999px;padding:13px 22px;
-  box-shadow:0 14px 26px -16px var(--wine-deep);
-  animation:nudge 2.2s ease-in-out infinite;
+  border:1.5px solid rgba(212,175,55,0.6);border-radius:999px;padding:13px 24px;
+  box-shadow:0 14px 26px -12px var(--wine-deep), 0 0 16px rgba(212,175,55,0.3);
+  animation:nudge 2s ease-in-out infinite;
+  margin: 0 auto 22px;
+  user-select:none;
 }
-.scroll-on svg{width:15px;height:15px}
+.scroll-on svg{width:16px;height:16px}
 @keyframes nudge{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
 
 .countdown{
@@ -2748,8 +2750,6 @@ h2.display {
     <div class="hero-venue-pill">
       📍 Krati Resort, Bareilly
     </div>
-
-    <div class="scrollcue">Scroll to see magic<i></i></div>
   </section>
 
   <!-- SAVE THE DATE -->
@@ -2782,6 +2782,11 @@ h2.display {
     </div>
 
     <div class="date-final" id="dateFinal">
+      <div class="scroll-on">
+        Scroll down
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v14M6 13l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+
       <p>Friday, 20th of November 2026 — Bareilly. We would love to have you celebrate with us!</p>
       <div class="countdown">
         <p class="cdlabel" id="cdLabel">Counting down to the big day</p>
@@ -2792,11 +2797,6 @@ h2.display {
           <div class="cdcell"><div class="cdnum" id="cdS">—</div><div class="cdunit">Seconds</div></div>
         </div>
       </div>
-
-      <button class="scroll-on" type="button" id="scrollOn">
-        Scroll down
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v14M6 13l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
     </div>
   </section>
 
@@ -2829,7 +2829,7 @@ h2.display {
           <div class="stack-fields">
             <div>
               <label class="lab" for="guestName">Your name</label>
-              <input type="text" id="guestName" name="guestName" autocomplete="name" placeholder="Aditi Sharma" required>
+              <input type="text" id="guestName" name="guestName" autocomplete="name" required>
             </div>
             <div>
               <label class="lab" for="guestPhone">Phone number</label>
@@ -2867,10 +2867,11 @@ h2.display {
 
         <button class="btn-solid" type="submit">Send RSVP</button>
       </form>
+      <p id="rsvp-error" role="alert" hidden style="color:var(--rose-deep);margin:12px 0 0"></p>
 
       <div id="rsvp-done" role="status">
         <div class="tick">Thank you!</div>
-        <p class="sub" style="margin-bottom:14px">Your RSVP is saved on this device. Tap below to send it to the family on WhatsApp.</p>
+        <p class="sub" style="margin-bottom:14px">Your RSVP request was sent. You can also message the family on WhatsApp to make sure they see it.</p>
         <button class="btn-solid" type="button" id="waSend">Send on WhatsApp</button>
         <button class="btn-ghost" type="button" id="editRsvp" style="margin-top:14px">Edit my answer</button>
       </div>
@@ -2905,15 +2906,9 @@ h2.display {
             <svg class="btn-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
               <path d="M12.031 2C6.495 2 2 6.49 2 12.023c0 1.97.57 3.81 1.554 5.36L2 22l4.781-1.527a9.98 9.98 0 0 0 5.25 1.488h.004c5.534 0 10.029-4.49 10.033-10.024A10.02 10.02 0 0 0 12.031 2zm0 18.362h-.003a8.33 8.33 0 0 1-4.24-1.154l-.304-.18-2.843.91.93-2.77-.197-.315a8.32 8.32 0 0 1-1.282-4.83c0-4.604 3.748-8.35 8.355-8.35a8.31 8.31 0 0 1 5.908 2.45 8.28 8.28 0 0 1 2.446 5.895c-.004 4.605-3.752 8.344-8.36 8.344zm4.582-6.257c-.251-.126-1.484-.732-1.714-.816-.23-.084-.397-.126-.564.126-.168.252-.649.816-.795.984-.146.168-.293.189-.544.063-.251-.126-1.06-.39-2.02-1.246-.746-.666-1.25-1.488-1.396-1.74-.147-.251-.016-.387.11-.512.113-.113.251-.294.377-.44.126-.147.168-.252.252-.42.083-.168.042-.315-.021-.44-.063-.126-.564-1.36-.773-1.863-.204-.49-.411-.424-.564-.432-.146-.008-.314-.008-.481-.008-.168 0-.44.063-.67.314-.23.252-.879.86-.879 2.097s.9 2.432 1.025 2.6c.126.168 1.77 2.703 4.29 3.791.6.26 1.068.415 1.433.531.602.192 1.15.165 1.583.1.483-.072 1.484-.607 1.693-1.194.21-.586.21-1.089.147-1.194-.063-.105-.23-.168-.481-.294z"/>
             </svg>
-            <span>Order on WhatsApp · 9161985707</span>
+            <span>Order on WhatsApp</span>
           </a>
 
-          <a class="creator-btn creator-btn-ig" href="https://www.instagram.com/avi_musician/" target="_blank" rel="noopener noreferrer">
-            <svg class="btn-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a3.999 3.999 0 1 1 0-7.998 3.999 3.999 0 0 1 0 7.998zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
-            </svg>
-            <span>Instagram · @avi_musician</span>
-          </a>
         </div>
 
         <div class="creator-features">
@@ -2949,6 +2944,8 @@ const CONFIG = {
   weddingAt:"2026-11-20T19:00:00+05:30", // Baraat & Royal Wedding
   venueMap: "https://www.google.com/maps/search/?api=1&query=Krati+Resort+Pilibhit+Road+Bareilly",
   whatsapp: "",                 // Add host phone number e.g. "91XXXXXXXXXX"
+  rsvpPage: "index",
+  rsvpEndpoint: "https://script.google.com/macros/s/AKfycbzeQ6vENrD1Oc3HG_65KDM8YokwfrQ5r8ERwL4raRinXSXSP089KmRQr5VgjeiRIIh4/exec",
 
   musicFiles: [
     "music.mp3",
@@ -2956,9 +2953,13 @@ const CONFIG = {
     "_Meta_Tere_Nal_Hi_Rehna_Ji_Jogi_Sad_Hindi_Ringtone_(by Fringster.com).mp3",
     "song.mp3"
   ],
-  autoplayOnOpen: true
+  autoplayOnOpen: false
 };
 
+/* ============================================================
+   EVENTS CONFIGURATION — PAGE 1 (All Events / Full Itinerary)
+   Edit this list anytime to customize the events for this page.
+   ============================================================ */
 const EVENTS = [
   {
     key: "haldi",
@@ -3043,10 +3044,9 @@ const EVENTS = [
 ];
 
 const STORY = [
-  { caption: "Where it began — Two paths, one beautiful collision", photo: "assets/couple.jpg" },
-  { caption: "Every walk, together — Countless laughs and memories", photo: "assets/couple.jpg" },
-  { caption: "The promise — He asked, she said yes", photo: "assets/couple.jpg" },
-  { caption: "Forever begins now — Come celebrate with us!", photo: "assets/couple.jpg" }
+  { caption: "Every walk, together — Countless laughs and memories", photo: "assets/pic1.jpeg" },
+  { caption: "The promise — He asked, she said yes", photo: "assets/pic2.jpeg" },
+  { caption: "Forever begins now — Come celebrate with us!", photo: "assets/pic3.jpeg" }
 ];
 
 
@@ -3460,16 +3460,13 @@ function startCountdown(){
   cdTimer = setInterval(tickCountdown, 1000);
 }
 
-document.getElementById("scrollOn").addEventListener("click", () => {
-  const target = document.getElementById("story");
-  if(target) target.scrollIntoView({behavior:"smooth", block:"start"});
-});
-
 /* ============================================================
    RSVP
    ============================================================ */
 const form = document.getElementById("rsvpForm");
 const doneBox = document.getElementById("rsvp-done");
+const rsvpError = document.getElementById("rsvp-error");
+const rsvpSubmit = form.querySelector('button[type="submit"]');
 let attending = "yes";
 
 document.getElementById("attendChoice").addEventListener("click", e => {
@@ -3505,16 +3502,39 @@ function message(r){
   return L.join("\n");
 }
 
-form.addEventListener("submit", e => {
+form.addEventListener("submit", async e => {
   e.preventDefault();
   const nameEl = document.getElementById("guestName");
   if(!nameEl.value.trim()){ nameEl.focus(); nameEl.style.borderColor = "var(--rose-deep)"; return; }
+  if(!/^https:\/\/script\.google\.com\/macros\/s\/[^/]+\/exec$/.test(CONFIG.rsvpEndpoint || "")){
+    rsvpError.textContent = "RSVP submission is not connected yet. Please contact the family directly.";
+    rsvpError.hidden = false;
+    return;
+  }
   const r = collect();
-  try{ localStorage.setItem("rsvp", JSON.stringify(r)); }catch(_){}
-  form.style.display = "none";
-  doneBox.classList.add("show");
-  doneBox.scrollIntoView({behavior:"smooth", block:"center"});
-  if(attending === "yes") confetti();
+  rsvpSubmit.disabled = true;
+  rsvpSubmit.textContent = "Sending...";
+  rsvpError.hidden = true;
+  try{
+    await fetch(CONFIG.rsvpEndpoint, {
+      method:"POST",
+      mode:"no-cors",
+      headers:{"Content-Type":"text/plain;charset=utf-8"},
+      body:JSON.stringify({page:CONFIG.rsvpPage, ...r})
+    });
+    try{ localStorage.setItem("rsvp", JSON.stringify(r)); }catch(_){}
+    form.style.display = "none";
+    doneBox.classList.add("show");
+    doneBox.scrollIntoView({behavior:"smooth", block:"center"});
+    if(attending === "yes") confetti();
+  }catch(error){
+    console.error("RSVP submission failed:", error);
+    rsvpError.textContent = "We couldn't submit your RSVP. Please try again or send it to the family on WhatsApp.";
+    rsvpError.hidden = false;
+  }finally{
+    rsvpSubmit.disabled = false;
+    rsvpSubmit.textContent = "Send RSVP";
+  }
 });
 
 document.getElementById("waSend").addEventListener("click", () => {
@@ -3567,7 +3587,7 @@ setIcon(false);
   const list = CONFIG.musicFiles || [];
   if(i >= list.length) return;                 // none found: the drone covers it
   const a = new Audio(list[i]);
-  a.loop = true; a.volume = 0.45; a.preload = "auto";
+  a.loop = true; a.volume = 0.2; a.preload = "auto";
   a.addEventListener("loadedmetadata", () => { audioEl = a; }, { once:true });
   a.addEventListener("error",          () => findSong(i + 1), { once:true });
 })(0);
@@ -3630,5 +3650,3 @@ if(CONFIG.autoplayOnOpen){
 
 </body>
 </html>
-
-
