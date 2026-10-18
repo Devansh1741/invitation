@@ -46,10 +46,11 @@ A bespoke, royal Indian wedding digital invitation website featuring an interact
 
 ## 📊 Google Sheets RSVP Setup
 
-The RSVP receiver is in [`Code.gs`](./Code.gs). It sends groom and other-guest
-responses to separate tabs in the shared spreadsheet, and bride responses to
-the second spreadsheet. The tabs are named `groom`, `other`, and `bride` to
-match their invitation pages. Each tab has name, phone, attendance, party
+The RSVP receiver is in [`Code.gs`](./Code.gs). It sends celebration and invite
+responses to separate tabs in the shared spreadsheet, and shubh (bride) responses
+to the second spreadsheet. The tabs are named `groom`, `other`, and `bride` to
+match their RSVP routes. The corresponding pages are `celebration.html`,
+`invite.html`, and `shubh.html`. Each tab has name, phone, attendance, party
 size, one Yes/No column per event on that page, and a `Created at` timestamp as
 the final column. Page is used internally to route responses and is not stored;
 couple, song request, dietary requirements, and advice are not saved. Missing
@@ -69,7 +70,7 @@ To enable submissions the first time:
    and **Who has access** to **Anyone**, then deploy and authorize access to both
    spreadsheets.
 4. Copy the web app URL ending in `/exec` into `rsvpEndpoint` in
-   `groom.html`, `other.html`, and `bride.html`.
+   `celebration.html`, `invite.html`, and `shubh.html`.
 
 When updating an existing deployment, use **Deploy → Manage deployments**,
 edit the current web app deployment, select **New version**, and deploy. This
