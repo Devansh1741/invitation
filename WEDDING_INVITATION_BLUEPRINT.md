@@ -167,7 +167,7 @@ The itinerary incorporates data from **Image 1 (Schedule)** and **Image 2 (Haldi
 ## 5. Website Architecture & Component Hierarchy
 
 ```
-index.html
+Invitation pages: celebration.html, invite.html, shubh.html
  ├── Floating Controls
  │    ├── #music (Web Audio API Tanpura Drone / MP3 playback toggle with animated sound bars)
  │    └── #share (Native Web Share API + Clipboard copy toast)
