@@ -1,32 +1,35 @@
 const RSVP_DESTINATIONS = {
-  "index": {
+  "groom": {
     spreadsheetId: "1Lt7Hi5m8hioStVRaQTsYdYNCnAliMyYdhlMHcceek8M",
-    sheetName: "Index RSVP"
+    sheetName: "groom",
+    legacySheetNames: ["Index RSVP"]
   },
-  "pre-wedding": {
+  "other": {
     spreadsheetId: "1Lt7Hi5m8hioStVRaQTsYdYNCnAliMyYdhlMHcceek8M",
-    sheetName: "Pre-Wedding RSVP"
+    sheetName: "other",
+    legacySheetNames: ["Pre-Wedding RSVP"]
   },
-  "wedding": {
+  "bride": {
     spreadsheetId: "1TVw1UplGe006IY6SYdBmQAmfYEbJC-6d_FZnZEs-5tM",
-    sheetName: "Wedding RSVP"
+    sheetName: "bride",
+    legacySheetNames: ["Wedding RSVP"]
   }
 };
 
 const RSVP_EVENTS = {
-  "index": [
+  "groom": [
     "Masti ki हल्दी",
     "Sangeet Night",
     "Wedding Carnival",
     "Ghurchadi",
     "Departure of Baraat & Royal Wedding"
   ],
-  "pre-wedding": [
+  "other": [
     "Wedding Carnival",
     "Ghurchadi",
     "Departure of Baraat"
   ],
-  "wedding": [
+  "bride": [
     "Haldi",
     "Mehendi",
     "After Party",
@@ -43,7 +46,7 @@ function doGet() {
     ok: true,
     schemaVersion: RSVP_SCHEMA_VERSION,
     columns: ["Name", "Phone", "Attending", "Party size"]
-      .concat(RSVP_EVENTS.index, ["Created at"])
+      .concat(RSVP_EVENTS.groom, ["Created at"])
   });
 }
 
@@ -61,8 +64,7 @@ function doPost(e) {
     const rsvp = validateRsvp(submission);
     lock.waitLock(10000);
     const spreadsheet = SpreadsheetApp.openById(destination.spreadsheetId);
-    let sheet = spreadsheet.getSheetByName(destination.sheetName);
-    if (!sheet) sheet = spreadsheet.insertSheet(destination.sheetName);
+    const sheet = getRsvpSheet(spreadsheet, destination);
     ensureSheetLayout(sheet, submission.page);
 
     sheet.appendRow([
@@ -84,6 +86,21 @@ function doPost(e) {
   } finally {
     if (lock.hasLock()) lock.releaseLock();
   }
+}
+
+function getRsvpSheet(spreadsheet, destination) {
+  let sheet = spreadsheet.getSheetByName(destination.sheetName);
+  if (sheet) return sheet;
+
+  for (let i = 0; i < destination.legacySheetNames.length; i++) {
+    sheet = spreadsheet.getSheetByName(destination.legacySheetNames[i]);
+    if (sheet) {
+      sheet.setName(destination.sheetName);
+      return sheet;
+    }
+  }
+
+  return spreadsheet.insertSheet(destination.sheetName);
 }
 
 function validateRsvp(submission) {

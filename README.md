@@ -48,16 +48,18 @@ A bespoke, royal Indian wedding digital invitation website featuring an interact
 
 The RSVP receiver is in [`Code.gs`](./Code.gs). It sends groom and other-guest
 responses to separate tabs in the shared spreadsheet, and bride responses to
-the second spreadsheet. Each tab has name, phone, attendance, party
+the second spreadsheet. The tabs are named `groom`, `other`, and `bride` to
+match their invitation pages. Each tab has name, phone, attendance, party
 size, one Yes/No column per event on that page, and a `Created at` timestamp as
 the final column. Page is used internally to route responses and is not stored;
 couple, song request, dietary requirements, and advice are not saved. Missing
 tabs are created automatically. On the first new RSVP after updating the script,
-existing RSVP rows are migrated to the new columns, retaining names, phone
+the existing `Index RSVP`, `Pre-Wedding RSVP`, and `Wedding RSVP` tabs are
+renamed and their rows migrated to the current columns, retaining names, phone
 numbers, attendance, party size, event selections, and timestamps:
 
-- Shared spreadsheet: `Index RSVP` (groom) and `Pre-Wedding RSVP` (other guests)
-- Wedding spreadsheet: `Wedding RSVP` (bride)
+- Shared spreadsheet: `groom` and `other`
+- Wedding spreadsheet: `bride`
 
 To enable submissions the first time:
 
