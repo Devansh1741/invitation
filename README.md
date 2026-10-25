@@ -1,7 +1,7 @@
 # 💍 Royal Shahi Lifafa Wedding Invitation Website
 ### *Mayank & Muskan | 20 November 2026*
 
-A bespoke, royal Indian wedding digital invitation website featuring an interactive **Shahi Lifafa (Royal Gold & Crimson Royal Envelope)** opening animation, traditional mangal shehnai background music, authentic event galleries, interactive map directions to Krati Resort, and an interactive scratch card.
+A bespoke, royal Indian wedding digital invitation website featuring an interactive **Shahi Lifafa (Royal Gold & Crimson Royal Envelope)** opening animation, traditional mangal shehnai background music, authentic event galleries, interactive map directions to The Krati, and an interactive scratch card.
 
 ---
 
@@ -25,12 +25,12 @@ A bespoke, royal Indian wedding digital invitation website featuring an interact
    - "Together with their families" royal typography honoring both families.
 
 3. **🗓️ Invitations by guest group**:
-   - **Bride**: Haldi (18 Nov 2026, 12:00 PM), followed by Mehendi (5:00 PM) and After Party (7:00 PM) together on one invitation entry at Lodheswar Marriage Lawn, Lucknow; plus Wedding Carnival, Ghurchadi, and Departure of Baraat on 20 Nov at Krati Resort, Bareilly.
+   - **Bride**: Haldi (18 Nov 2026, 12:00 PM), followed by Mehendi (5:00 PM) and After Party (7:00 PM) together on one invitation entry at Lodheswar Marriage Lawn, Lucknow; plus Wedding Carnival, Ghurchadi, and Departure of Baraat on 20 Nov at The Krati, Bareilly.
    - **Groom**: Full itinerary for 19–20 November 2026.
    - **Other guests**: Wedding Carnival (20 Nov, 12:00 PM), Ghurchadi (5:00 PM), and Departure of Baraat (7:00 PM).
 
 4. **📍 Interactive Venue & Maps**:
-   - Venues: **Lodheswar Marriage Lawn, Lucknow** and **Krati Resort, Bareilly**
+   - Venues: **Lodheswar Marriage Lawn, Lucknow** and **The Krati, Bareilly**
    - Direct Google Maps navigation links for all celebrations.
 
 5. **✨ Interactive Scratch Card & RSVP**:

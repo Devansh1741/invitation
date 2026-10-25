@@ -2698,7 +2698,7 @@ h2.display {
         
         <div class="card-rule"><span></span><i>✦</i><span></span></div>
         <div class="card-date">20 NOVEMBER 2026</div>
-        <div class="card-venue">📍 KRATI RESORT · BAREILLY</div>
+        <div class="card-venue">📍 THE KRATI · BAREILLY</div>
         <div class="card-corner-flourish top-left"></div>
         <div class="card-corner-flourish top-right"></div>
         <div class="card-corner-flourish bot-left"></div>
@@ -2715,7 +2715,7 @@ h2.display {
         <span class="pk-mid">WEDDING INVITATION</span>
         <span class="pk-bot">MAYANK &amp; MUSKAN</span>
         <span class="pk-date">20 NOVEMBER 2026</span>
-        <span class="pk-venue">📍 KRATI RESORT · BAREILLY</span>
+        <span class="pk-venue">📍 THE KRATI · BAREILLY</span>
       </div>
     </div>
 
@@ -2780,7 +2780,7 @@ h2.display {
       ✦ 20 November 2026 ✦
     </div>
     <div class="hero-venue-pill">
-      📍 Krati Resort, Bareilly
+      📍 The Krati, Bareilly
     </div>
   </section>
 
@@ -3037,7 +3037,7 @@ const EVENTS = [
     dress: "Colorful Chic / Breezy Daywear",
     dressNote: "",
     swatch: [],
-    venue: "Krati Resort, Pilibhit Road, Near Airport, Bareilly",
+    venue: "The Krati, Pilibhit Road, Near Airport, Bareilly",
     map: "https://maps.app.goo.gl/N1pXvw8ZehydxuGm7",
     img: "assets/carnival.jpg"
   },
@@ -3053,7 +3053,7 @@ const EVENTS = [
     dress: "",
     dressNote: "",
     swatch: [],
-    venue: "Krati Resort, Pilibhit Road, Near Airport, Bareilly",
+    venue: "The Krati, Pilibhit Road, Near Airport, Bareilly",
     map: "https://maps.app.goo.gl/N1pXvw8ZehydxuGm7",
     img: "assets/Baarat1.jpg"
   },
@@ -3069,7 +3069,7 @@ const EVENTS = [
     dress: "",
     dressNote: "",
     swatch: [],
-    venue: "Krati Resort, Pilibhit Road, Near Airport, Bareilly",
+    venue: "The Krati, Pilibhit Road, Near Airport, Bareilly",
     map: "https://maps.app.goo.gl/N1pXvw8ZehydxuGm7",
     img: "assets/wedding1.jpeg"
   }
@@ -3127,7 +3127,7 @@ document.getElementById("eventList").innerHTML = EVENTS.map(e => `
         ${e.dressNote ? `<div class="dn">${e.dressNote}</div>` : ''}
       </div>` : ''}
       <p class="venue">📍 ${e.venue}</p>
-      <a class="btn-ghost" href="${e.map || CONFIG.venueMap}" target="_blank" rel="noopener">View on Map ↗</a>
+      <a class="btn-ghost" href="${e.map || CONFIG.venueMap}">View on Map ↗</a>
     </div>
   </article>`).join("");
 
@@ -3575,7 +3575,7 @@ try{
 })();
 const shareBtn = document.getElementById("share");
 if(shareBtn) shareBtn.addEventListener("click", () => {
-  const text = `With the blessings of Shri Ganesh \u{1FA94}, the Rathore Family is delighted to invite you to the wedding of our beloved son Mayank with Muskan (Shivangi) on 19-20 November 2026 at Krati Resort, Bareilly \u{1F4CD}
+  const text = `With the blessings of Shri Ganesh \u{1FA94}, the Rathore Family is delighted to invite you to the wedding of our beloved son Mayank with Muskan (Shivangi) on 19-20 November 2026 at The Krati, Bareilly \u{1F4CD}
 
 Please tap the envelope on our invite below to see the details \u{1F48C}\u{1F447}
 
@@ -3613,7 +3613,7 @@ setIcon(false);
   const list = CONFIG.musicFiles || [];
   if(i >= list.length) return;                 // none found: the drone covers it
   const a = new Audio(list[i]);
-  a.loop = true; a.volume = 0.2; a.preload = "auto";
+  a.loop = true; a.volume = 0.1; a.preload = "auto";
   a.addEventListener("loadedmetadata", () => { audioEl = a; }, { once:true });
   a.addEventListener("error",          () => findSong(i + 1), { once:true });
 })(0);
@@ -3650,10 +3650,10 @@ function musicOn(){
   playing = true; setIcon(true);
   if(audioEl){
     const p = audioEl.play();
-    if(p && p.catch) p.catch(() => { if(playing) droneTo(0.11); });
+    if(p && p.catch) p.catch(() => { if(playing) droneTo(0.055); });
     return;
   }
-  droneTo(0.11);
+  droneTo(0.055);
 }
 function musicOff(){
   playing = false; setIcon(false);
