@@ -2980,10 +2980,8 @@ const CONFIG = {
   rsvpEndpoint: "https://script.google.com/macros/s/AKfycbzeQ6vENrD1Oc3HG_65KDM8YokwfrQ5r8ERwL4raRinXSXSP089KmRQr5VgjeiRIIh4/exec",
 
   musicFiles: [
-    "song1.mp3",
+    "assets/song1.mp3",
     "assets/song2.mp3",
-    "_Meta_Tere_Nal_Hi_Rehna_Ji_Jogi_Sad_Hindi_Ringtone_(by Fringster.com).mp3",
-    "song.mp3"
   ],
   autoplayOnOpen: true
 };
@@ -3127,7 +3125,7 @@ document.getElementById("eventList").innerHTML = EVENTS.map(e => `
         ${e.dressNote ? `<div class="dn">${e.dressNote}</div>` : ''}
       </div>` : ''}
       <p class="venue">📍 ${e.venue}</p>
-      <a class="btn-ghost" href="${e.map || CONFIG.venueMap}">View on Map ↗</a>
+      <!-- <a class="btn-ghost" href="${e.map || CONFIG.venueMap}">View on Map ↗</a> -->
     </div>
   </article>`).join("");
 
