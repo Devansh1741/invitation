@@ -31,7 +31,7 @@ This blueprint deconstructs the reference luxury wedding invitation web applicat
 | **Audio Engine & Autoplay Unblocker** | Solves mobile iOS Safari / Android Chrome autoplay restrictions by hooking the envelope tap (a genuine user gesture) to `audio.play()`. Includes Web Audio API Tanpura oscillator drone generator as zero-latency fallback if no mp3 is present. | Background wedding shehnai / flute romantic sitar track with floating music controller (pulsing wavebars and mute toggle). |
 | **Interactive Scratch Cards** | 3 Canvas scratch-offs for **Month (Nov)**, **Day (19-20)**, and **Year (2026)** with real-time pointer tracking (`pointerdown`, `pointermove`), dynamic brush radius, and threshold clear detector (`getImageData` > 45% cleared triggers auto-reveal). | Guests scratch off to reveal the wedding celebration dates. |
 | **Celebratory Confetti Explosion** | Canvas particle physics emitter exploding festive multi-color ribbons and gold flakes upon scratching all 3 cards. | Confetti burst triggers the live countdown clock and unlocks the itinerary. |
-| **Live Dynamic Countdown Clock** | JavaScript `setInterval` calculating exact Days, Hours, Minutes, Seconds to Baraat / Phere on November 20, 2026. Automatically shifts to "Together Since" post-wedding. | Real-time countdown to **November 20, 2026, 7:00 PM** at The Krati, Bareilly. |
+| **Live Dynamic Countdown Clock** | JavaScript `setInterval` calculating exact Days, Hours, Minutes, Seconds to Baraat / Phere on November 20, 2026. Automatically shifts to "Together Since" post-wedding. | Real-time countdown to **November 20, 2026, 7:00 PM** at The Krati Resort, Bareilly. |
 | **Event Timeline & Swatches** | Grid of ceremony cards with custom quotes, date tags, venue directions, and interactive circular color palette swatches. | 5 Complete Ceremonies with full dress codes, venue links, and times extracted from user images. |
 | **One-Click RSVP to WhatsApp** | Interactive form capturing guest count, ceremonies attending, dietary preferences, and auto-composing formatted WhatsApp message. | Integrated WhatsApp RSVP dispatch to host's contact number. |
 
@@ -151,8 +151,8 @@ The itinerary incorporates data from **Image 1 (Schedule)** and **Image 2 (Haldi
   * Followed by Dinner, Varmala & Sacred Phere
 * **Title:** Departure of Baraat & Royal Wedding
 * **Quote:** "Two souls, two families, united under the stars in eternal love."
-* **Venue:** The Krati, Pilibhit Road, Near Airport, Bareilly
-* **Google Maps Query:** `The Krati, Pilibhit Road, Near Airport, Bareilly`
+* **Venue:** The Krati Resort, Pilibhit Road, Near Airport, Bareilly
+* **Google Maps Query:** `The Krati Resort, Pilibhit Road, Near Airport, Bareilly`
 * **Dress Code:**
   * **Attire:** Grand Traditional Royal Indian (Sherwanis, Embroidered Lehengas, Safas/Turbans)
   * **Suggested Shades:** Velvet Crimson, Regal Maroon, Pearl Ivory & Pure Zari Gold
