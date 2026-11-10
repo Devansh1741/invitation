@@ -2974,7 +2974,7 @@ const CONFIG = {
   couple:   { a: "Mayank", b: "Muskan", initials: "M & M" },
   date:     { month: "November", day: "18", year: "2026" },
   weddingAt:"2026-11-20T17:00:00+05:30", // Baraat & Royal Wedding
-  venueMap: "https://maps.app.goo.gl/N1pXvw8ZehydxuGm7",
+  venueMap: "https://www.google.com/maps/place/The+Krati+Resort/@28.4126206,79.4704713,19.54z/data=!4m15!1m5!3m4!2zMjjCsDI0JzQ1LjgiTiA3OcKwMjgnMTQuMyJF!8m2!3d28.4127222!4d79.4706389!3m8!1s0x39a005f950eb7a89:0x4fe87ddcde759189!5m2!4m1!1i2!8m2!3d28.4127042!4d79.4707006!16s%2Fg%2F11txrn4jsm?entry=ttu&g_ep=EgoyMDI2MTEwNC4wIKXMDSoASAFQAw%3D%3D",
   whatsapp: "",                 // Add host phone number e.g. "91XXXXXXXXXX"
   rsvpPage: "bride",
   rsvpEndpoint: "https://script.google.com/macros/s/AKfycbzeQ6vENrD1Oc3HG_65KDM8YokwfrQ5r8ERwL4raRinXSXSP089KmRQr5VgjeiRIIh4/exec",
@@ -3038,7 +3038,7 @@ const EVENTS = [
     dressNote: "",
     swatch: [],
     venue: "The Krati Resort, Pilibhit Road, Near Airport, Bareilly",
-    map: "https://maps.app.goo.gl/N1pXvw8ZehydxuGm7",
+    map: "https://www.google.com/maps/place/The+Krati+Resort/@28.4126206,79.4704713,19.54z/data=!4m15!1m5!3m4!2zMjjCsDI0JzQ1LjgiTiA3OcKwMjgnMTQuMyJF!8m2!3d28.4127222!4d79.4706389!3m8!1s0x39a005f950eb7a89:0x4fe87ddcde759189!5m2!4m1!1i2!8m2!3d28.4127042!4d79.4707006!16s%2Fg%2F11txrn4jsm?entry=ttu&g_ep=EgoyMDI2MTEwNC4wIKXMDSoASAFQAw%3D%3D",
     img: "assets/wedding1.jpeg"
   }
 ];
@@ -3095,7 +3095,7 @@ document.getElementById("eventList").innerHTML = EVENTS.map(e => `
         ${e.dressNote ? `<div class="dn">${e.dressNote}</div>` : ''}
       </div>` : ''}
       <p class="venue">📍 ${e.venue}</p>
-      <!-- <a class="btn-ghost" href="${e.map || CONFIG.venueMap}">View on Map ↗</a> -->
+      <a class="btn-ghost" href="${e.map || CONFIG.venueMap}">View on Map ↗</a>
     </div>
   </article>`).join("");
 
